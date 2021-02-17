@@ -462,6 +462,12 @@
         },
         "comment": "用户基本信息"
       },
+      "card": {
+        "url": "http://api.bilibili.com/x/web-interface/card",
+        "method": "GET",
+        "verify": false,
+        "comment": "获取用户卡片信息"
+      },
       "relation": {
         "url": "https://api.bilibili.com/x/relation/stat",
         "method": "GET",
