@@ -84,6 +84,26 @@ def get_up_info(uid: int, verify: utils.Verify = None):
     return data
 
 
+def get_user_card(uid: int, photo: bool = False, verify: utils.Verify = None):
+    """
+    获取用户名片信息（头像，粉丝数）
+    B站API太乱了。。。
+    :param uid:
+    :param verify:
+    :return:
+    """
+    if verify is None:
+        verify = utils.Verify()
+
+    api = API["user"]["info"]["card"]
+    params = {
+        "mid": uid,
+        "photo": photo,
+    }
+    data = utils.get(url=api["url"], params=params, cookies=verify.get_cookies())
+    return data
+
+  
 def get_live_info(uid: int, verify: utils.Verify = None):
     """
     获取用户直播间信息
