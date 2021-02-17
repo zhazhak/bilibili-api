@@ -87,8 +87,8 @@ def get_up_info(uid: int, verify: utils.Verify = None):
 def get_user_card(uid: int, photo: bool = False, verify: utils.Verify = None):
     """
     获取用户名片信息（头像，粉丝数）
-    B站API太乱了。。。
     :param uid:
+    :param photo:
     :param verify:
     :return:
     """
