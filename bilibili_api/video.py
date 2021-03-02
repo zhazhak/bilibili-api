@@ -697,6 +697,9 @@ def get_danmaku_g(bvid: str = None, aid: int = None, page_id: int = 0,
     if date is not None:
         params["date"] = date.strftime("%Y-%m-%d")
         params["type"] = 1
+        api = {
+            "url": "https://api.bilibili.com/x/v2/dm/web/history/seg.so"
+        }
     # 先获取 view 信息
     view = get_danmaku_view(page_id, aid=aid)
     sge_count = view['dmSge']['total']
