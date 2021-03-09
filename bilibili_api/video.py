@@ -762,7 +762,7 @@ def get_danmaku_g(bvid: str = None, aid: int = None, page_id: int = 0,
                                 dm_data_offset += 1
                                 d = real_data[dm_data_offset:dm_data_offset + str_len]
                                 dm_data_offset += str_len
-                                dm.crc32_id = d.decode()
+                                dm.crc32_id = d.decode(errors='ignore')
                             elif data_type == 7:
                                 str_len = real_data[dm_data_offset]
                                 dm_data_offset += 1
@@ -790,7 +790,7 @@ def get_danmaku_g(bvid: str = None, aid: int = None, page_id: int = 0,
                                 dm_data_offset += 1
                                 d = real_data[dm_data_offset:dm_data_offset + str_len]
                                 dm_data_offset += str_len
-                                dm.id_str = d.decode()
+                                dm.id_str = d.decode(errors='ignore')
                             elif data_type == 13:
                                 d, l = utils.read_varint(real_data[dm_data_offset:])
                                 dm_data_offset += l
