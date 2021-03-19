@@ -762,7 +762,7 @@ def get_danmaku_g(bvid: str = None, aid: int = None, page_id: int = 0,
                                 dm_data_offset += 1
                                 d = real_data[dm_data_offset:dm_data_offset + str_len]
                                 dm_data_offset += str_len
-                                dm.crc32_id = d.decode()
+                                dm.crc32_id = d.decode(errors='ignore')
                             elif data_type == 7:
                                 str_len = real_data[dm_data_offset]
                                 dm_data_offset += 1
@@ -790,7 +790,7 @@ def get_danmaku_g(bvid: str = None, aid: int = None, page_id: int = 0,
                                 dm_data_offset += 1
                                 d = real_data[dm_data_offset:dm_data_offset + str_len]
                                 dm_data_offset += str_len
-                                dm.id_str = d.decode()
+                                dm.id_str = d.decode(errors='ignore')
                             elif data_type == 13:
                                 d, l = utils.read_varint(real_data[dm_data_offset:])
                                 dm_data_offset += l
@@ -1233,7 +1233,8 @@ def video_upload(path: str, verify: utils.Verify, on_progress=None):
         for i in range(settings['threads']):
             this_task_chunks = chunks_settings[i*chunks_per_thread:(i+1)*chunks_per_thread]
             task_chunks.append(this_task_chunks)
-        task_chunks[-1] += (chunks_settings[-remain:])
+        if remain != 0:
+            task_chunks[-1] += (chunks_settings[-remain:])
 
         async with aiohttp.ClientSession(headers={'X-Upos-Auth': settings['auth']}, cookies=verify.get_cookies()) as sess:
             while True:
