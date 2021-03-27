@@ -1,4 +1,4 @@
-![LOGO](https://pic.imgdb.cn/item/602511ef3ffa7d37b343a3a9.jpg)
+![LOGO](https://pic.imgdb.cn/item/6023d5aa3ffa7d37b3cb1d23.png)
 
 # bilibili_api
 
