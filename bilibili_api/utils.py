@@ -186,9 +186,10 @@ class Danmaku(object):
 
 
 class Verify(object):
-    def __init__(self, sessdata: str = None, csrf: str = None):
+    def __init__(self, sessdata: str = None, csrf: str = None, buvid3: str = None):
         self.sessdata = sessdata
         self.csrf = csrf
+        self.buvid3 = buvid3
 
     def get_cookies(self):
         """
@@ -200,6 +201,8 @@ class Verify(object):
             cookies["SESSDATA"] = self.sessdata
         if self.has_csrf():
             cookies["bili_jct"] = self.csrf
+        if self.has_buvid3():
+            cookies["buvid3"] = self.buvid3
         return cookies
 
     def has_sess(self):
@@ -221,6 +224,12 @@ class Verify(object):
             return False
         else:
             return True
+
+    def has_buvid3(self):
+        """
+        是否提供 buvid3
+        """
+        return self.buvid3 is not None
 
     def check(self):
         """
